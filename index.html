@@ -588,10 +588,33 @@
             }
         }
     </style>
+    <style>
+        /* Animation for name */
+        #animated-name {
+            animation: colorPulse 3s infinite alternate;
+            font-weight: 700;
+        }
+
+        @keyframes colorPulse {
+            0% { color: #4a6cf7; }
+            50% { color: #6f42c1; }
+            100% { color: #4a6cf7; }
+        }
+
+        /* Rotating text animation */
+        #animated-text {
+            font-weight: 600;
+            font-size: 24px;
+            border-right: 2px solid #4a6cf7;
+            white-space: nowrap;
+            overflow: hidden;
+            display: inline-block;
+            vertical-align: bottom;
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
-    <header>
         <div class="container">
             <nav>
                 <a href="#" class="logo">Portfolio</a>
@@ -614,8 +637,8 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
-                    <h1>Hi, I'm Rajesh</h1>
-                    <h2>A Python Full Stack Developer</h2>
+                    <h1>Hi, I'm <span id="animated-name" style="color: #4a6cf7;">Rajesh</span></h1>
+                    <h2>I am a <span id="animated-text" style="color: #4a6cf7;"></span></h2>
                     <p>I build responsive, user-friendly websites and applications tailored to your needs. With a passion for clean code and innovative design, I turn ideas into digital experiences.</p>
                     <div class="hero-buttons">
                         <a href="#projects" class="btn">View My Work</a>
@@ -699,6 +722,27 @@
                     <h3>React</h3>
                     <p>Component-based architecture and state management</p>
                 </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fab fa-python"></i>
+                    </div>
+                    <h3>Python</h3>
+                    <p>Backend development, data processing, and automation</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <h3>Flask</h3>
+                    <p>Lightweight Python web framework for RESTful APIs</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>Django</h3>
+                    <p>Full-featured Python web framework with ORM and admin</p>
+                </div>
             </div>
         </div>
     </section>
@@ -713,11 +757,13 @@
             <div class="projects-grid">
                 <div class="project-card">
                     <div class="project-image">
-                        <i class="fas fa-dumbbell"></i>
+                        <i class="fas fa-shopping-cart"></i>
                     </div>
                     <div class="project-content">
-                        <h3>Your Workout</h3>
-                        <p>You can't forget your workout and you'll be a very important person. It's just a lot of fun that sounds like a lot of fun!</p>
+                        <h3>E-Commerce Website</h3>
+                        <p>Full-stack e-commerce platform built with HTML, CSS, Python, Django, and SQLite. Features user authentication, product catalog, shopping cart, and payment integration.</p>
+                        <a href="https://ecommerce.example.com" target="_blank" class="btn btn-outline" style="margin-right: 10px;">Live Demo</a>
+                        <a href="https://github.com/Rajesh9894/e-comm-web.git" target="_blank" class="btn btn-outline">GitHub</a>
                     </div>
                 </div>
                 <div class="project-card">
@@ -725,8 +771,10 @@
                         <i class="fas fa-mobile-alt"></i>
                     </div>
                     <div class="project-content">
-                        <h3>Selva Mobile</h3>
-                        <p>Modern and clean user interface designs for a mobile app.</p>
+                        <h3>Mobile Service Shop</h3>
+                        <p>Responsive mobile service shop website built with HTML, CSS, and JavaScript. Features service booking, product showcase, and customer reviews.</p>
+                        <a href="https://rajesh9894.github.io/service-shop/" target="_blank" class="btn btn-outline" style="margin-right: 10px;">Live Demo</a>
+                        <a href="https://github.com/Rajesh9894/service-shop.git" target="_blank" class="btn btn-outline">GitHub</a>
                     </div>
                 </div>
                 <div class="project-card">
@@ -734,8 +782,10 @@
                         <i class="fas fa-tasks"></i>
                     </div>
                     <div class="project-content">
-                        <h3>Todo List</h3>
-                        <p>A modern and clean to-do application with intuitive user interface.</p>
+                        <h3>Todo List App</h3>
+                        <p>Interactive todo list application with task management, filtering, and local storage. Built with modern JavaScript and responsive design.</p>
+                        <a href="https://rajesh9894.github.io/ToDo/" target="_blank" class="btn btn-outline" style="margin-right: 10px;">Live Demo</a>
+                        <a href="https://github.com/Rajesh9894/ToDo.git" target="_blank" class="btn btn-outline">GitHub</a>
                     </div>
                 </div>
             </div>
@@ -863,6 +913,28 @@
                 // This is just a placeholder for the functionality
             });
         });
+
+        // Rotating text animation script
+        const texts = ["full stack developer", "python developer", "web developer"];
+        let count = 0;
+        let index = 0;
+        let currentText = '';
+        let letter = '';
+        (function type() {
+            if (count === texts.length) {
+                count = 0;
+            }
+            currentText = texts[count];
+            letter = currentText.slice(0, ++index);
+            document.getElementById('animated-text').textContent = letter;
+            if (letter.length === currentText.length) {
+                count++;
+                index = 0;
+                setTimeout(type, 1500);
+            } else {
+                setTimeout(type, 150);
+            }
+        })();
     </script>
 </body>
 </html>
